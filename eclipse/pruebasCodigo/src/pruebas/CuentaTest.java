@@ -34,7 +34,7 @@ class CuentaTest {
 	@Test
 	void testIngresarDinero() {
 		cuenta.ingresarDinero(400);
-		assertEquals(500,cuenta.getSaldo());
+		assertEquals(500,cuenta.getSaldo()); 
 	}
 
 	@Test
