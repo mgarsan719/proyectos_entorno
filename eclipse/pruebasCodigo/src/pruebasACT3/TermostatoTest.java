@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 class TermostatoTest
 {
 
-	private static Termostato t1;
+	private Termostato t1;
 	
 	@BeforeEach
-	public static void Termostato() 
+	public  void Termostato() 
 	{
 		t1 = new Termostato(10, 30, 20);
 	}
@@ -106,7 +106,7 @@ class TermostatoTest
 			
 			fail();
 		}
-		catch(ArithmeticException ae)
+		catch(IllegalArgumentException ae)
 		{
 			//Prueba correcta
 		}
@@ -123,22 +123,131 @@ class TermostatoTest
 			fail();
 
 		}
-		catch(ArithmeticException ae)
+		catch(IllegalArgumentException ae)
 		{
 			// Prueba correcta
 		}
 	}
 	
+	@Test
+	void test_encender() 
+	{
+		t1.encender();
+		assertEquals(true, t1.isEncendido());
+	}
 	
+	@Test
+	void test_apagar() 
+	{
+		t1.apagar();
+		assertEquals(false, t1.isEncendido());
+	}
 	
+	@Test
+	void test_subir1() 
+	{		
+		try 
+		{
+			t1.subir(5);	
+			
+			fail();
+		}
+		catch(IllegalStateException ae)
+		{
+			//Prueba correcta
+		}
+	}
 	
+	@Test
+	void test_subir2() 
+	{		
+		try 
+		{
+			t1.subir(-5);
+			
+			fail();
+		}
+		catch(IllegalStateException ae)
+		{
+			//Prueba correcta
+		}
+	}
 	
-//	@Test
-//	void testSetTemperaturaMin() 
-//	{
-//		t1.setTemperaturaMin(18);
-//		assertEquals(18, t1.getTemperaturaMin());
-//	}
+	@Test
+	void test_subir3() 
+	{		
+		try 
+		{
+			t1.subir(15);
+			
+			fail();
+		}
+		catch(IllegalStateException ae)
+		{
+			//Prueba correcta
+		}
+	}
 	
+	@Test
+	void test_subir4() 
+	{		
+		t1.encender();
+		
+		t1.subir(5);
+		assertEquals(25, t1.getTemperaturaActual());
+	}
 	
+	@Test
+	void test_bajar1() 
+	{		
+		try 
+		{
+			t1.bajar(5);	
+			
+			fail();
+		}
+		catch(IllegalStateException ae)
+		{
+			//Prueba correcta
+		}
+	}
+	
+	@Test
+	void test_bajar2() 
+	{		
+		try 
+		{
+			t1.bajar(-5);
+			
+			fail();
+		}
+		catch(IllegalStateException ae)
+		{
+			//Prueba correcta
+		}
+	}
+	
+	@Test
+	void test_bajar3() 
+	{		
+		try 
+		{
+			t1.bajar(15);
+			
+			fail();
+		}
+		catch(IllegalStateException ae)
+		{
+			//Prueba correcta
+		}
+	}
+	
+	@Test
+	void test_bajar4() 
+	{		
+		t1.encender();
+		
+		t1.bajar(5);
+		assertEquals(15, t1.getTemperaturaActual());
+	}
 }
