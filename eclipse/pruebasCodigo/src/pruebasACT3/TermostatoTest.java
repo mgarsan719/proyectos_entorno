@@ -64,6 +64,14 @@ class TermostatoTest
 	@Test
 	void test_setTemperaturaMin2() 
 	{
+		t1.setTemperaturaMin(31);
+		assertEquals(10, t1.getTemperaturaMin());
+		
+	}
+	
+	@Test
+	void test_setTemperaturaMin3() 
+	{
 		t1.setTemperaturaMin(25);
 		assertEquals(25, t1.getTemperaturaMin());
 		
@@ -82,6 +90,14 @@ class TermostatoTest
 	
 	@Test
 	void test_setTemperaturaMax2() 
+	{
+		t1.setTemperaturaMax(9);
+		assertEquals(30, t1.getTemperaturaMax());
+		
+	}
+	
+	@Test
+	void test_setTemperaturaMax3() 
 	{
 		t1.setTemperaturaMax(19);
 		assertEquals(19, t1.getTemperaturaMax());
@@ -163,6 +179,7 @@ class TermostatoTest
 	{		
 		try 
 		{
+			t1.encender();
 			t1.subir(-5);
 			
 			fail();
@@ -178,6 +195,7 @@ class TermostatoTest
 	{		
 		try 
 		{
+			t1.encender();
 			t1.subir(15);
 			
 			fail();
@@ -217,6 +235,7 @@ class TermostatoTest
 	{		
 		try 
 		{
+			t1.encender();
 			t1.bajar(-5);
 			
 			fail();
@@ -232,6 +251,7 @@ class TermostatoTest
 	{		
 		try 
 		{
+			t1.encender();
 			t1.bajar(15);
 			
 			fail();
@@ -246,8 +266,17 @@ class TermostatoTest
 	void test_bajar4() 
 	{		
 		t1.encender();
-		
 		t1.bajar(5);
 		assertEquals(15, t1.getTemperaturaActual());
 	}
+	
+	// pruebas actividad 2
+	@Test
+	void test_setTemperaturaMinAct2() 
+	{
+		t1.setTemperaturaMin(18);
+		assertEquals(18, t1.getTemperaturaMin());
+	}
+	
+	
 }
